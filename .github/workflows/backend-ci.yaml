@@ -11,7 +11,7 @@ on:
 jobs:
   install_pipenv:
     name: Pipenv installation job
-    runs: pip install -U pipenv
+    run: pip install -U pipenv
   linting_job:
     name: Linting job
     runs-on: ubuntu-latest
