@@ -9,15 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  install_pipenv:
-    name: Pipenv installation job
-    runs-on: ubuntu-latest
-    steps:
-      - run: pip install -U pipenv
   linting_job:
     name: Linting job
     runs-on: ubuntu-latest
     steps:
+      - name: Install pipenv
+        run: pip install -U pipenv
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install packages
@@ -28,6 +25,8 @@ jobs:
     name: Test job
     runs-on: ubuntu-latest
     steps:
+      - name: Install pipenv
+        run: pip install -U pipenv
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install packages
@@ -41,6 +40,8 @@ jobs:
       - linting_job
       - test_job
     steps:
+      - name: Install pipenv
+        run: pip install -U pipenv
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install packages
