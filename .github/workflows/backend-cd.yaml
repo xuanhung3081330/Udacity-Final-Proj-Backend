@@ -12,11 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install python
-        run: |
-          sudo apt install software-properties-common
-          sudo add-apt-repository ppa:deadsnakes/ppa
-          sudo apt update 
-          sudo apt install python3.8 -y
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
@@ -30,9 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install python
-        run: |
-          sudo apt update
-          sudo apt install python 3.8 -y
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
