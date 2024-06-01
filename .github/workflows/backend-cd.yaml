@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Install python
         run: |
-          apt update
-          apt install python 3.8
+          sudo apt update
+          sudo apt install python 3.8
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
@@ -29,8 +29,8 @@ jobs:
     steps:
       - name: Install python
         run: |
-          apt update
-          apt install python 3.8
+          sudo apt update
+          sudo apt install python 3.8
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
