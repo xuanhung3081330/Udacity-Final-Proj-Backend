@@ -9,12 +9,12 @@ on:
 jobs:
   linting_job:
     name: Linting job
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.8.0'
+          python-version: '3.8'
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
@@ -25,12 +25,12 @@ jobs:
         run: pipenv run lint
   test_job:
     name: Test job
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.8.0'
+          python-version: '3.8'
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
@@ -45,7 +45,7 @@ jobs:
       AWS_REGION: us-east-1
       AWS_ACCOUNT_ID: 193180914360
       EKS_CLUSTER: cluster
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs:
       - linting_job
       - test_job
