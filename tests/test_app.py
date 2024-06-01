@@ -1,4 +1,4 @@
-from . import app
+from tests import app
 import os
 
 

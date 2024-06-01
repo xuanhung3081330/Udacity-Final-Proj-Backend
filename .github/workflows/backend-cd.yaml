@@ -37,10 +37,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Install packages
         run: pipenv install
-      - name: Verify location
-        run: |
-          pwd
-          ls -la
       - name: Run test
         run: pipenv run test
   build_job:
