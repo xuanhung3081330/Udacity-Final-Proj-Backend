@@ -56,8 +56,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Login to AWS ECR
         uses: aws-actions/amazon-ecr-login@v2
       - name: Extract git tag
@@ -65,12 +65,12 @@ jobs:
       - name: Verify git tag content
         run: echo $GIT_SHA
       - name: Build image
-        run: docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/backend:$GIT_SHA
+        run: docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/backend:$GIT_SHA .
       - name: Deploy image
         run: docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/backend:$GIT_SHA
       - name: Config kubectl to connect to AWS EKS Cluster
         run: aws eks update-kubeconfig --name $EKS_CLUSTER
       - name: Deploy application
         run: |
-          kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
+          kubectl apply -f ./k8s/deployment.yaml
+          kubectl apply -f ./k8s/service.yaml
