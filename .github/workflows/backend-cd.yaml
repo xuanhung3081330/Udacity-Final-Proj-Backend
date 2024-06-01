@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Install python
         run: |
-          apt install software-properties-common
-          add-apt-repository ppa:deadsnakes/ppa
-          apt update 
-          apt install python 3.8 -y
+          sudo apt install software-properties-common
+          sudo add-apt-repository ppa:deadsnakes/ppa
+          sudo apt update 
+          sudo apt install python 3.8 -y
       - name: Install pipenv
         run: pip install -U pipenv
       - name: Checkout code
